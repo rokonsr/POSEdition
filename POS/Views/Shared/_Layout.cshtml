@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <!--Date Picker Start-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!--Date Picker End-->
+
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Point Of Sales", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Basic Setup <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Financial Year", "Index", new {Controller = "FinancialYear", Area = ""})</li>
+                            <li>@Html.ActionLink("Shop", "Index", new {Controller = "Shop", Area = ""})</li>
+                            <li>@Html.ActionLink("Category", "Index", new {Controller = "Category", Area = ""})</li>
+                            <li>@Html.ActionLink("Brand", "Index", new {Controller = "Brand", Area = ""})</li>
+                            <li>@Html.ActionLink("Measurement", "Index", new {Controller = "Measurement", Area = ""})</li>
+                            <li>@Html.ActionLink("Product", "Index", new {Controller = "Product", Area = ""})</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Transaction <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Customer", "Index", new { Controller = "Customer", Area = "" })</li>
+                            <li>@Html.ActionLink("Supplier", "Index", new {Controller = "Supplier", Area = ""})</li>
+                            <li>@Html.ActionLink("Purchase", "Index", new {Controller = "Purchase", Area = ""})</li>
+                            <li>@Html.ActionLink("Sales", "Index", new { Controller = "Sales", Area = "" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Report<span class="caret"></span></a>
+                        @*<ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Stock", "Index", new { Controller = "Supplier", Area = "" })</li>
+                            <li>@Html.ActionLink("Sales", "Index", new { Controller = "Purchase", Area = "" })</li>
+                        </ul>*@
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr style="background-color: #3a99bd; height:2px;" />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Point Of Sales System - Developed by Team Vision</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(function () {
+            $('.MyDate').datepicker({ dateFormat: 'dd MM yy', type:Text }).click(function () { $(this).focus(); });
+        });
+
+        $('input[type=date]').each(function () {
+            this.type = "text";
+        });
+    </script>
+
+</body>
+</html>
